@@ -6,7 +6,7 @@
 
 void readDessert(Dessert s){
     printf("%s  ",s.name);
-    if(s.dc == 'c')
+    if(s.dc == 1)
         printf("%d  %d  %d",s.cost1,s.cost2,s.cost3);
     else printf("%d",s.cost1);
 }
@@ -15,11 +15,11 @@ void readDessert(Dessert s){
     
 
 
-void listDessert(Dessert *s){
+void listDessert(Dessert *s, int count){
     printf("---------------------Coffee---------------------\n");
-    printf("                    Tall  Grande  Venti\n");
-    for(int i=0; i<11); i++){
-        if(s[i].dc == 'c'){
+    printf("             Tall  Grande  Venti\n");
+    for(int i=0; i<count; i++){
+        if(s[i].dc == 1){
         if(s[i].cost1 == -1) continue;
         printf("%d. ", i+1);
         readDessert(s[i]);
@@ -29,8 +29,8 @@ void listDessert(Dessert *s){
     }
      printf("---------------------Cake---------------------\n");
         
-        for(int i=0; i<11; i++){
-        if(s[i].dc == 'c'){
+        for(int i=0; i<count; i++){
+        if(s[i].dc == 2){
         if(s[i].cost1 == -1) continue;
         printf("%d. ", i+1);
         readDessert(s[i]);
@@ -45,10 +45,10 @@ void listDessert(Dessert *s){
 
 int selectMenu(){
     int menu;
-    printf("\n/u1F370/u1F36E/uF9C1/u2615/u1F9CBu/1F379 Dessert Foundation /u2615/u1F9CBu/1F379/u1F370/u1F36E/uF9C1\n");
-    printf("1. Today's Dessert(list)\n");
+    printf("\n**************** Dessert Foundation ****************\n");
+    printf("1. Today's Dessert\n");
     //printf("2. Search By Name\n");
-    printf("3. Order Menu()\n");
+    printf("3. Order Menu\n");
     //printf("4. Save Order\n");
     printf("5. Delete Menu\n");
     //printf("6. View Last Order\n");
@@ -63,15 +63,27 @@ int selectMenu(){
 
 void orderMenu(Dessert *s){
     getchar();
+    printf("1.커피 2.케이크: ");
+    scanf("%d",&s->dc);
+    if(s->dc == 1){
+    getchar();
     printf("원하는 디저트 이름: ");
     scanf("%[^\n]s",s->name);
-    getchar();
     printf("1.Tall 2.Grande 3.Venti: ");
+    getchar();
     scanf("%d",&s->size);
     printf("1.ice 2.hot: ");
     scanf("%d",&s->coldHot);
-    printf("1.포장 2.아님: ");
+    printf("1.포장 2.매장: ");
     scanf("%d",&s->togo); 
+    }
+    else{
+    getchar();
+    printf("원하는 디저트 이름: ");
+    scanf("%[^\n]s",s->name);
+    printf("1.포장 2.매장: ");
+    scanf("%d",&s->togo);
+     }
 } 
 
   void deleteMenu(Dessert *s){
@@ -79,11 +91,31 @@ void orderMenu(Dessert *s){
 }
 
 
-void yourOrder(Dessert *s){
-    listDessert(s);
+void yourOrder(Dessert *s, int count){
+        printf("---------------------Coffee---------------------\n");
+    for(int i=0; i<count; i++){
+        if(s[i].dc == 1){
+        if(s[i].cost1 == -1) continue;
+        printf("%d. ", i+1);
+        printf("%s", s->name);
+        printf("\n\n");
+        }
+      
+    }
+     printf("---------------------Cake---------------------\n");
+        
+        for(int i=0; i<count; i++){
+        if(s[i].dc == 2){
+        if(s[i].cost1 == -1) continue;
+        printf("%d. ", i+1);
+        printf("%s", s[i].name);
+        printf("\n\n");
+    }
+    }
 }
 
 void updateMenu(Dessert *s){
+    getchar();
     printf("새로운 디저트 이름: ");
     scanf("%[^\n]s",s->name);
     getchar();
