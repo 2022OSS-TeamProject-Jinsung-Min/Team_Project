@@ -45,7 +45,7 @@ arr[9].cost1 = 3100;
 arr[10].dc = 'c';
 arr[10].name = "김부각";  
 arr[10].cost1 = 2100;
-for(int i=0; i<(int)(sizeof(arr)/sizeof(Dessert)); i++){
+for(int i=0; i<11; i++){
     if(arr[i].dc == 'd'){
         arr[i].cost2 = arr[i].cost1+500;
         arr[i].cost3 = arr[i].cost2+500;

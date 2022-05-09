@@ -7,7 +7,7 @@
 void readDessert(Dessert s){
     printf("%s  ",s.name);
     if(s.dc == 'c')
-        printf("%d\t%d\t%d",s.cost1,s.cost2,s.cost3);
+        printf("%d  %d  %d",s.cost1,s.cost2,s.cost3);
     else printf("%d",s.cost1);
 }
     
@@ -16,9 +16,9 @@ void readDessert(Dessert s){
 
 
 void listDessert(Dessert *s){
-    printf("--------------Coffee--------------\n\n");
-    printf("                    Tall\tGrande\tVenti\n");
-    for(int i=0; i<(int)(sizeof(*s)/sizeof(Dessert)); i++){
+    printf("---------------------Coffee---------------------\n");
+    printf("                    Tall  Grande  Venti\n");
+    for(int i=0; i<11); i++){
         if(s[i].dc == 'c'){
         if(s[i].cost1 == -1) continue;
         printf("%d. ", i+1);
@@ -27,9 +27,9 @@ void listDessert(Dessert *s){
         }
       
     }
-     printf("--------------Cake--------------\n\n");
+     printf("---------------------Cake---------------------\n");
         
-        for(int i=0; i<(int)(sizeof(*s)/sizeof(Dessert)); i++){
+        for(int i=0; i<11; i++){
         if(s[i].dc == 'c'){
         if(s[i].cost1 == -1) continue;
         printf("%d. ", i+1);
