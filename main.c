@@ -4,10 +4,14 @@
 #include "system.h"
 
 
-
 int main(void){
 Dessert arr[20];
 Dessert order[20];
+  //int count =0;
+    //int index =0;
+int menu;
+int num1;
+
 arr[0].dc = 'd';
 arr[0].name = "OSS 라떼";  
 arr[0].cost1 = 6100;
@@ -51,10 +55,7 @@ for(int i=0; i<(int)(sizeof(arr)/sizeof(Dessert)); i++){
         arr[i].cost3 =  arr[i].cost1;
     }
 }
-    int count =0;
-    int index =0;
-    int menu;
-    int num1,num2;
+  
 
 
 // printf("\n/u1F370/u1F36E/uF9C1/u2615/u1F9CBu/1F379 Dessert Foundation /u2615/u1F9CBu/1F379/u1F370/u1F36E/uF9C1\n");
