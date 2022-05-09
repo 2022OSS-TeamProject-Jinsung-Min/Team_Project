@@ -10,10 +10,10 @@ Dessert order[20];
   //int count =0;
     //int index =0;
 int menu;
-int num1;
+int num1,num2;
 
 arr[0].dc = 'd';
-arr[0].name = "OSS 라떼";  
+arr[0].name = {"OSS 라떼"};  
 arr[0].cost1 = 6100;
 arr[1].dc = 'd';
 arr[1].name = "아메리카노";  
@@ -96,14 +96,14 @@ for(int i=0; i<(int)(sizeof(arr)/sizeof(Dessert)); i++){
             }
         }
         else if (menu == 7){
-            listDessert(&arr);
+            listDessert(arr);
             printf("번호는 (취소 :0)? ");
             scanf("%d", &num1);
             updateMenu(&arr[num1-1]);
             printf("\n=> 수정됨!\n");
             }
        else if(menu == 8){
-           yourOrder(&order);
+           yourOrder(order);
        }
         
     }
