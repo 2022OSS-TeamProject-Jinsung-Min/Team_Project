@@ -18,9 +18,9 @@ void readDessert(Dessert s){
 void listDessert(Dessert *s){
     printf("--------------Coffee--------------\n\n");
     printf("                    Tall\tGrande\tVenti\n");
-    for(int i=0; i<sizeof(s)/sizeof(Dessert); i++){
-        if(s[i]->dc == 'c'){
-        if(s[i]->cost1 == -1) continue;
+    for(int i=0; i<sizeof(*s)/sizeof(Dessert); i++){
+        if(s[i].dc == 'c'){
+        if(s[i].cost1 == -1) continue;
         printf("%d. ", i+1);
         readDessert(s[i]);
         printf("\n\n");
@@ -29,9 +29,9 @@ void listDessert(Dessert *s){
     }
      printf("--------------Cake--------------\n\n");
         
-        for(int i=0; i<sizeof(s)/sizeof(Dessert); i++){
-        if(s[i]->dc == 'c'){
-        if(s[i]->cost1 == -1) continue;
+        for(int i=0; i<sizeof(*s)/sizeof(Dessert); i++){
+        if(s[i].dc == 'c'){
+        if(s[i].cost1 == -1) continue;
         printf("%d. ", i+1);
         readDessert(s[i]);
         printf("\n\n");
@@ -79,8 +79,8 @@ void orderMenu(Dessert *s){
 }
 
 
-void yourOrder(Dessert *arr){
-    void listDessert(arr);
+void yourOrder(Dessert *s){
+    void listDessert(s);
 }
 
 void updateMenu(Dessert *s){
