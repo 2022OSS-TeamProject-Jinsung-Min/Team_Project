@@ -18,22 +18,26 @@ void readDessert(Dessert s){
 void listDessert(Dessert s[]){
     printf("--------------Coffee--------------\n\n");
     printf("                    Tall\tGrande\tVenti\n")
-    if(s.dc == 'c'){
-        for(int i=0; i<sizeof(s)/sizeof(Dessert); i++){
+    for(int i=0; i<sizeof(s)/sizeof(Dessert); i++){
+        if(s.dc == 'c'){
         if(s[i].cost1 == -1) continue;
         printf("%d. ", i+1);
         readProduct(s[i]);
         printf("\n\n");
+        }
+      
     }
      printf("--------------Cake--------------\n\n");
-        if(s.dc == 'c'){
+        
         for(int i=0; i<sizeof(s)/sizeof(Dessert); i++){
+        if(s.dc == 'c'){
         if(s[i].cost1 == -1) continue;
         printf("%d. ", i+1);
         readProduct(s[i]);
         printf("\n\n");
     }
     
+}
 } // 배열에 있는 디저트를 출력하는 함수(readDesert함수 사용)
 
 
