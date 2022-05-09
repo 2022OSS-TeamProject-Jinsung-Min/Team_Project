@@ -15,14 +15,14 @@ void readDessert(Dessert s){
     
 
 
-void listDessert(Dessert s[]){
+void listDessert(Dessert *s){
     printf("--------------Coffee--------------\n\n");
-    printf("                    Tall\tGrande\tVenti\n")
+    printf("                    Tall\tGrande\tVenti\n");
     for(int i=0; i<sizeof(s)/sizeof(Dessert); i++){
         if(s.dc == 'c'){
         if(s[i].cost1 == -1) continue;
         printf("%d. ", i+1);
-        readProduct(s[i]);
+        readDessert(s[i]);
         printf("\n\n");
         }
       
@@ -30,10 +30,10 @@ void listDessert(Dessert s[]){
      printf("--------------Cake--------------\n\n");
         
         for(int i=0; i<sizeof(s)/sizeof(Dessert); i++){
-        if(s.dc == 'c'){
-        if(s[i].cost1 == -1) continue;
+        if(s[i]->dc == 'c'){
+        if(s[i]->cost1 == -1) continue;
         printf("%d. ", i+1);
-        readProduct(s[i]);
+        readDessert(s[i]);
         printf("\n\n");
     }
     
@@ -70,11 +70,11 @@ void orderMenu(Dessert *s){
     scanf("%d",&s->size);
     printf("1.ice 2.hot: ");
     scanf("%d",&s->coldHot);
-    printf("1.포장 2.아님: );
+    printf("1.포장 2.아님: ");
     scanf("%d",&s->togo); 
 } 
 
-  void deleteMenu(Product *s){
+  void deleteMenu(Dessert *s){
     s->cost = -1;
 }
 
