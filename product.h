@@ -10,10 +10,10 @@ typedef struct{//상품 구조체
 	int clodHot; // 온도(1(ice) or 2(hot)), 음식인인 경우에는 0	
 } Dessert;
 
-int addDessert(Dessert *d);
+int addOrder(Dessert i,Dessert *d);
 
 void readDessert(Dessert *d);
 
-int updateDessert(Dessert *d);
+int updateDessert(Dessert i, Dessert *d);
 
 int deleteDessert(Dessert *d);

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <product.h>
 
-int orderDessert(Dessert i, Dessert *d){
+int addOrder(Dessert i, Dessert *d){
 	int num = 0;
 	printf("\n");
 	printf("고르실 제품의 숫자를 입력해주시오.");
