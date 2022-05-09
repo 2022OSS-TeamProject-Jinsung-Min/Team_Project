@@ -21,6 +21,6 @@ void orderMenu(Dessert *s);
 
 void DeleteMenu(Dessert *arr);
 
-void yourOrder(Dessert *arr);
+void yourOrder(Dessert s[]);
 
 void updateMenu(Dessert *s);

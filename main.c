@@ -102,7 +102,7 @@ for(int i=0; i<(sizeof(arr)/sizeof(int)); i++){
             printf("\n=> 수정됨!\n");
             }
        else if(menu == 8){
-           yourOrder(Dessert *order);
+           yourOrder(&order);
        }
         
     }
