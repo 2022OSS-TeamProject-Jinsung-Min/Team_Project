@@ -74,14 +74,14 @@ for(int i=0; i<(sizeof(arr)/sizeof(int)); i++){
         if (menu == 0) break;
 
         if (menu == 1){
-            listDessert(arr);
+            listDessert(&arr);
         }
       
         else if (menu == 3){
             orderMenu(&order);
         }
         else if (menu == 5){
-            listDessert(arr);
+            listDessert(&arr);
             printf("번호는 (취소 :0)? ");
             scanf("%d", &num1);
             if(num1 == 0)
@@ -95,7 +95,7 @@ for(int i=0; i<(sizeof(arr)/sizeof(int)); i++){
             }
         }
         else if (menu == 7){
-            listDessert(arr);
+            listDessert(&arr);
             printf("번호는 (취소 :0)? ");
             scanf("%d", &num1);
             updateMenu(&arr[num1-1]);
