@@ -13,7 +13,7 @@ int menu;
 int num1,num2;
 
 arr[0].dc = 'd';
-arr[0].name = {"OSS 라떼"};  
+arr[0].name = "OSS 라떼";  
 arr[0].cost1 = 6100;
 arr[1].dc = 'd';
 arr[1].name = "아메리카노";  
