@@ -2,7 +2,7 @@
 
 typedef struct{ // 디저트 구조체
 char dc; // 디저트의 대분류(drink or cake)
-char name[30]; // 디저트의 이름
+char name[40]; // 디저트의 이름
 int size; // 음료 디저트 사이즈 (Tall, Grande, Venti)
 int cost1;
 int cost2;
@@ -19,7 +19,7 @@ int selectMenu();
 
 void orderMenu(Dessert *s);
 
-void DeleteMenu(Dessert *arr);
+void deleteMenu(Dessert *arr);
 
 void yourOrder(Dessert *s);
 

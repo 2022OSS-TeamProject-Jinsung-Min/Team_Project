@@ -41,7 +41,7 @@ arr[9].cost1 = 3100;
 arr[10].dc = 'c';
 arr[10].name = "김부각";  
 arr[10].cost1 = 2100;
-for(int i=0; i<(sizeof(arr)/sizeof(int)); i++){
+for(int i=0; i<(int)(sizeof(arr)/sizeof(Dessert)); i++){
     if(arr[i].dc == 'd'){
         arr[i].cost2 = arr[i].cost1+500;
         arr[i].cost3 = arr[i].cost2+500;
@@ -74,14 +74,14 @@ for(int i=0; i<(sizeof(arr)/sizeof(int)); i++){
         if (menu == 0) break;
 
         if (menu == 1){
-            listDessert(&arr);
+            listDessert(arr);
         }
       
         else if (menu == 3){
-            orderMenu(&order);
+            orderMenu(order);
         }
         else if (menu == 5){
-            listDessert(&arr);
+            listDessert(arr);
             printf("번호는 (취소 :0)? ");
             scanf("%d", &num1);
             if(num1 == 0)
