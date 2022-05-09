@@ -13,7 +13,7 @@ int coldHot; // 온도(1(ice) or 2(hot))
 
 void readDessert(Dessert s);
 
-void listDessert(Dessert *s);
+void listDessert(Dessert s[]);
 
 int selectMenu(); 
 
