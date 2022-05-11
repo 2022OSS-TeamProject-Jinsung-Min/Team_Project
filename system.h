@@ -1,5 +1,5 @@
 //system.h 21700256 박민, 21700305 박지성
-
+//수정필요
 typedef struct{ // 디저트 구조체
 int dc; // 디저트의 대분류(drink or cake)
 char *name; // 디저트의 이름
