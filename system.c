@@ -27,7 +27,7 @@ void listDessert(Dessert *s, int count){
         }
       
     }
-     printf("---------------------Cake---------------------\n");
+     printf("-----------------------Cake-----------------------\n");
         
         for(int i=0; i<count; i++){
         if(s[i].dc == 2){
