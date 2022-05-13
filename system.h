@@ -4,7 +4,7 @@ typedef struct{ // 디저트 구조체
 int dc; // 디저트의 대분류(drink or cake)
 char *name; // 디저트의 이름
 int size; // 음료 디저트 사이즈 (Tall, Grande, Venti)
-int cost1;
+int cost1; //
 int cost2;
 int cost3; // 디저트 가격
 int togo; // 포장유무 
