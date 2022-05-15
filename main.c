@@ -6,57 +6,12 @@
 
 int main(void){
 Dessert arr[20];
-Dessert order[20];
+Dessert order[100];
 int count=0;
 int menu;
 int num1,num2;
 
-arr[0].dc = 1;
-arr[0].name = "OSS 라떼";  
-arr[0].cost1 = 6100;
-arr[1].dc = 1;
-arr[1].name = "아메리카노";  
-arr[1].cost1 = 4500;
-arr[2].dc = 1;
-arr[2].name = "초콜릿 모카";  
-arr[2].cost1 = 5600;
-arr[3].dc = 1;
-arr[3].name = "카페 모카";  
-arr[3].cost1 = 5100;
-arr[4].dc = 1;
-arr[4].name = "카페 라떼";  
-arr[4].cost1 = 4600;
-arr[5].dc = 1;
-arr[5].name = "바닐라 라떼";  
-arr[5].cost1 = 5800;
-arr[6].dc = 2;
-arr[6].name = "당근 케이크";  
-arr[6].cost1 = 6100;
-arr[7].dc = 2;
-arr[7].name = "초코 케이크";  
-arr[7].cost1 = 5800;
-arr[8].dc = 2;
-arr[8].name = "딸기 케이크";  
-arr[8].cost1 = 6400;
-arr[9].dc = 2;
-arr[9].name = "뚱카롱";  
-arr[9].cost1 = 3100;
-arr[10].dc = 2;
-arr[10].name = "김부각";  
-arr[10].cost1 = 2100;
-for(int i=0; i<11; i++){
-    if(arr[i].dc == 1){
-        arr[i].cost2 = arr[i].cost1+500;
-        arr[i].cost3 = arr[i].cost2+500;
-    }
-    else if(arr[i].dc == 2){
-         arr[i].cost2 =  arr[i].cost1;
-        arr[i].cost3 =  arr[i].cost1;
-    }
-}
-  
-
-
+setDessert(arr);
 
     while (1){
         menu = selectMenu();
@@ -64,35 +19,42 @@ for(int i=0; i<11; i++){
         if (menu == 0) break;
 
         if (menu == 1){
-            listDessert(arr,11);
+            listDessert(arr);
         }
       
+        else if (menu == 2){
+            orderMenu(order,count++);
+        }
         else if (menu == 3){
-            orderMenu(&order[count++]);
+            yourOrder(order,count);
         }
-        else if (menu == 5){
-            listDessert(arr,11);
-            printf("번호는 (취소 :0)? ");
-            scanf("%d", &num1);
-            if(num1 == 0)
-                printf("=> 취소 됨!\n");
-            else{
-                 printf("정말로 삭제하시겠습니까?(삭제 :1)");
-                 scanf("%d", &num2);
-                 if(num2 == 1)
-                deleteMenu(&arr[num1-1]);
-                 printf("\n=> 삭제됨!\n");
+        else if (menu == 4){
+            yourOrder(order,count);
+            if(updateMenu(order,count)==1){
+                 printf("\n=> 메뉴가 수정되었습니다!\n");
             }
-        }
-        else if (menu == 7){
-            listDessert(arr,11);
-            printf("번호는 (취소 :0)? ");
-            scanf("%d", &num1);
-            updateMenu(&arr[num1-1]);
-            printf("\n=> 수정됨!\n");
             }
-       else if(menu == 8){
+       else if(menu == 5){
            yourOrder(order,count);
+           printf("취소하실 메뉴의 번호를 입력하세요: ");
+           scanf("%d",&num1);
+           for(int i=0; i<count; i++){
+               if(order[i].num == num1){
+                   printf("%s 주문을 취소하시겠습니까?\n",order[i].name);
+                   printf("yes=> 1  no=> 2 : ");
+                   scanf("%d",num2);
+                  if(num2==1){
+                      deleteMenu(&order[i]);
+                      printf("%s 주문이 취소되었습니다.\n");
+                  }
+                  else{
+                      printf("주문 취소가 취소되었습니다.\n");
+                  }
+               }
+               else{
+                   printf("해당 번호의 메뉴가 주문내역에 존재하지 않습니다.\n");
+               }
+           }
        }
         
     }

@@ -3,24 +3,27 @@
 typedef struct{ // 디저트 구조체
 int dc; // 디저트의 대분류(drink or cake)
 char *name; // 디저트의 이름
+int num; //디저트 번호
 int size; // 음료 디저트 사이즈 (Tall, Grande, Venti)
-int cost1;
+int cost1; 
 int cost2;
 int cost3; // 디저트 가격
 int togo; // 포장유무 
-int coldHot; // 온도(1(ice) or 2(hot))
+int temp; // 온도(1(ice) or 2(hot))
 } Dessert;
+
+void setDessert(Dessert *arr);
 
 void readDessert(Dessert s);
 
-void listDessert(Dessert *s, int count);
+void listDessert(Dessert *s);
 
-int selectMenu(); 
+int selectOption();
 
-void orderMenu(Dessert *s);
+void orderMenu(Dessert s[],int count);
 
 void deleteMenu(Dessert *arr);
 
-void yourOrder(Dessert *s, int count);
+void yourOrder(Dessert s[],int count);
 
-void updateMenu(Dessert *s);
+int updateMenu(Dessert s[], int count);
