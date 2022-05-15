@@ -6,15 +6,17 @@
 
 int main(void){
 Dessert arr[20];
-Dessert order[100];
+Dessert order[20];
 int count=0;
 int menu;
-int num1,num2;
+int num1,num2=0;
 
 setDessert(arr);
 
+
+
     while (1){
-        menu = selectMenu();
+        menu = selectOption();
 
         if (menu == 0) break;
 
@@ -23,14 +25,13 @@ setDessert(arr);
         }
       
         else if (menu == 2){
-            orderMenu(order,count++);
+            orderMenu(order,arr,count++);
         }
         else if (menu == 3){
             yourOrder(order,count);
         }
         else if (menu == 4){
-            yourOrder(order,count);
-            if(updateMenu(order,count)==1){
+            if(updateMenu(order,arr,count)==1){
                  printf("\n=> 메뉴가 수정되었습니다!\n");
             }
             }
@@ -42,10 +43,10 @@ setDessert(arr);
                if(order[i].num == num1){
                    printf("%s 주문을 취소하시겠습니까?\n",order[i].name);
                    printf("yes=> 1  no=> 2 : ");
-                   scanf("%d",num2);
+                   scanf("%d",&num2);
                   if(num2==1){
                       deleteMenu(&order[i]);
-                      printf("%s 주문이 취소되었습니다.\n");
+                      printf("%s 주문이 취소되었습니다.\n",order[i].name);
                   }
                   else{
                       printf("주문 취소가 취소되었습니다.\n");

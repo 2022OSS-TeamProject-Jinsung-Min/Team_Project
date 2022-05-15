@@ -20,10 +20,10 @@ void listDessert(Dessert *s);
 
 int selectOption();
 
-void orderMenu(Dessert s[],int count);
+void orderMenu(Dessert s[],Dessert s2[], int count);
 
 void deleteMenu(Dessert *arr);
 
 void yourOrder(Dessert s[],int count);
 
-int updateMenu(Dessert s[], int count);
+int updateMenu(Dessert s[],Dessert s2[], int count);

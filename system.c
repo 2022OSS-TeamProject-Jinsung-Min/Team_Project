@@ -91,23 +91,23 @@ int selectOption(){
     return menu;
 } // 프로그램 시 메뉴를 선택하는 함수
 
-void orderMenu(Dessert s[],int count){
-    getchar();
-    printf("1.커피 2.케이크: ");
+void orderMenu(Dessert s[],Dessert s2[],int count){
+    printf("1.커피 2.케이크: "); //다른 번호를 눌렀을때 처리필요
     scanf("%d",&s[count].dc);
     if(s->dc == 1){
     printf("커피번호: ");
-    scanf("%d",&s[count].num);
+    scanf("%d",&s[count].num); //다른 번호를 눌렀을때 처리필요
+    s[count].name = s2[(s[count].num)-1].name; //번호를 통해 기존 메뉴의 이름을 복사
     printf("1.Tall 2.Grande 3.Venti: ");
-    scanf("%d",&s[count].size);
+    scanf("%d",&s[count].size); //다른 번호를 눌렀을때 처리필요
     printf("1.ice 2.hot: ");
-    scanf("%d",&s[count].temp);
+    scanf("%d",&s[count].temp); //다른 번호를 눌렀을때 처리필요
     printf("1.포장 2.매장: ");
-    scanf("%d",&s[count].togo); 
+    scanf("%d",&s[count].togo); //다른 번호를 눌렀을때 처리필요
     }
     else{
     getchar();
-    printf("디저트 번호: ");
+    printf("케이크 번호: ");
     scanf("%d",&s[count].num);
     printf("1.포장 2.매장: ");
     scanf("%d",&s[count].togo);
@@ -127,11 +127,11 @@ void yourOrder(Dessert s[],int count){
         if(s[i].cost1 == -1) continue;
         printf("%d. ", s[i].num);
         printf("%s", s[i].name);
-        if(s->size == 1){
+        if(s[i].size == 1){
             printf("Tall(%d) ",s[i].cost1);
             total += s[i].cost1;
         }
-        else if(s->size == 2){
+        else if(s[i].size == 2){
             printf("Grande(%d) ",s[i].cost2);
             total += s[i].cost2;
         } 
@@ -155,7 +155,7 @@ void yourOrder(Dessert s[],int count){
 printf("total: %d\n",total);
 }
 
-int updateMenu(Dessert s[], int count){
+int updateMenu(Dessert s[],Dessert s2[], int count){
     int num1, num2;
     int count1=0;
     yourOrder(s,count);
@@ -169,14 +169,14 @@ int updateMenu(Dessert s[], int count){
             break;
         }
     }
-    if (count1 = 0){
+    if (count1 == 0){
     printf("해당 번호는 주문하신 메뉴에 존재하지 않습니다.\n");
     return 0;
     }
 
     else{
         listDessert(s);
-        orderMenu(s,num2);
+        orderMenu(s,s2,num2);
         return 1;
     }
 } 
