@@ -12,6 +12,10 @@ int togo; // 포장유무
 int temp; // 온도(1(ice) or 2(hot))
 } Dessert;
 
+void savaOrder(Dessert s[], int count);//구현필요
+
+void loadLastOrder(Dessert *s);//구현필요
+
 void setArray(Dessert *arr, int count); //사용자의 주문을 담기위한 배열을 default로 초기화(segementation error방지)
 
 void setDessert(Dessert *arr);
