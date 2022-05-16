@@ -7,4 +7,4 @@ $(TARGET) : $(OBJECTS)
 	$(CC) $(CFLAGS) -o $@ $^
 
 clean:
-	rm *.o system
+	rm *.o system *.txt
