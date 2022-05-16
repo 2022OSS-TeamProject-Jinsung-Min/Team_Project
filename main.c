@@ -14,6 +14,7 @@ int num1,num2=0;
 
 setDessert(arr);
 setArray(order,50);
+setArray(last, 50);
 
     while (1){
         menu = selectOption();
@@ -61,13 +62,13 @@ setArray(order,50);
            saveOrder(order, count);
        }
         else if(menu == 7){
-           lastcount = loadOrder(last);
-           if(lastcount == 0){
-               printf("최근 주문 내역이 없습니다!\n");
-           }
-           else{
-              yourOrder(last, lastcount); 
-           }
+            lastcount = loadOrder(last);
+            if(lastcount == 0){
+                printf("최근 주문 내역이 없습니다!\n");
+            }
+            else{
+                yourOrder(last, lastcount); 
+            }
         }
         
     }
