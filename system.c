@@ -4,6 +4,20 @@
 #include <string.h>
 #include "system.h"
 
+void setArray(Dessert *arr, int count){
+    for(int i=0; i<count; i++){
+        arr[i].dc = 0;
+        arr[i].name = " ";
+        arr[i].cost1 = 0;
+        arr[i].cost2 = 0;
+        arr[i].cost3 = 0;
+        arr[i].num = 0;
+        arr[i].size = 0;
+        arr[i].temp = 0;
+        arr[i].togo = 0;
+    }
+}
+
 void setDessert(Dessert *arr){ //매뉴 세팅
 arr[0].dc = 1;
 arr[0].name = "OSS 라떼";  
@@ -94,12 +108,13 @@ int selectOption(){
 void orderMenu(Dessert s[],Dessert s2[],int count){
     printf("1.커피 2.케이크: "); //다른 번호를 눌렀을때 처리필요
     scanf("%d",&s[count].dc);
-    if(s->dc == 1){
+    if(s[count].dc == 1){
     printf("커피번호: ");
     scanf("%d",&s[count].num); //다른 번호를 눌렀을때 처리필요
     s[count].name = s2[(s[count].num)-1].name; //번호를 통해 기존 메뉴의 이름을 복사
     printf("1.Tall 2.Grande 3.Venti: ");
     scanf("%d",&s[count].size); //다른 번호를 눌렀을때 처리필요
+    s[count].cost1 = s2[(s[count].num)-1].cost1;
     printf("1.ice 2.hot: ");
     scanf("%d",&s[count].temp); //다른 번호를 눌렀을때 처리필요
     printf("1.포장 2.매장: ");
@@ -109,6 +124,8 @@ void orderMenu(Dessert s[],Dessert s2[],int count){
     getchar();
     printf("케이크 번호: ");
     scanf("%d",&s[count].num);
+    s[count].name = s2[(s[count].num)-1].name; 
+    s[count].cost1 = s2[(s[count].num)-1].cost1;
     printf("1.포장 2.매장: ");
     scanf("%d",&s[count].togo);
      }
@@ -126,33 +143,43 @@ void yourOrder(Dessert s[],int count){
         if(s[i].dc == 1){
         if(s[i].cost1 == -1) continue;
         printf("%d. ", s[i].num);
-        printf("%s", s[i].name);
+        if(s[i].temp == 1) printf("*Ice %s*", s[i].name);
+        else printf("*Hot %s*", s[i].name);
         if(s[i].size == 1){
-            printf("Tall(%d) ",s[i].cost1);
+            printf("  *Tall(%d)*",s[i].cost1);
             total += s[i].cost1;
         }
         else if(s[i].size == 2){
-            printf("Grande(%d) ",s[i].cost2);
+            s[i].cost2 = s[i].cost1+500;
+            printf("  *Grande(%d)*",s[i].cost2);
             total += s[i].cost2;
         } 
         else {
-            printf("Venti(%d) ",s[i].cost3);
+            s[i].cost3 = s[i].cost1+1000;
+            printf("  *Venti(%d)*",s[i].cost3);
             total += s[i].cost3;
         }
+        if(s[i].togo == 1) printf("  *포장주문 O*");
+        else printf("  *포장주문 X*");
         printf("\n\n");
+    }
     }
      printf("---------------------Cake---------------------\n"); 
         for(int i=0; i<count; i++){
         if(s[i].dc == 2){
         if(s[i].cost1 == -1) continue;
         printf("%d. ", s[i].num);
-        printf("%s", s[i].name);
+        printf("*%s*", s[i].name);
+        printf("  *%d*",s[i].cost1);
+        if(s[i].togo == 1) printf("  *포장주문 O*");
+        else printf("  *포장주문 X*");
+
         total += s[i].cost1;
         printf("\n\n");
     }
     }
-}
-printf("total: %d\n",total);
+printf("----------------------------------------------\n");
+printf("  total: %d\n",total);
 }
 
 int updateMenu(Dessert s[],Dessert s2[], int count){
@@ -175,7 +202,8 @@ int updateMenu(Dessert s[],Dessert s2[], int count){
     }
 
     else{
-        listDessert(s);
+        listDessert(s2);
+        printf("새로 주문하실 디저트를 선택하세요.\n\n");
         orderMenu(s,s2,num2);
         return 1;
     }

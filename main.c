@@ -3,17 +3,15 @@
 #include <string.h>
 #include "system.h"
 
-
 int main(void){
 Dessert arr[20];
-Dessert order[20];
+Dessert order[50];
 int count=0;
 int menu;
 int num1,num2=0;
 
 setDessert(arr);
-
-
+setArray(order,50);
 
     while (1){
         menu = selectOption();
