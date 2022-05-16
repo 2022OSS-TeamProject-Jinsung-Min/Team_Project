@@ -217,10 +217,10 @@ void saveOrder(Dessert s[], int count){
         if(s[i].cost1 == -1)
             continue;
         if(s[i].dc == 1){
-            fprintf(fp,"%d %d %s %d %d %d %d", s[i].dc, s[i].cost1, s[i].name, s[i].cost1, s[i].togo, s[i].size, s[i].temp);
+            fprintf(fp,"%d %d %s %d %d %d %d", s[i].dc, s[i].num, s[i].name, s[i].cost1, s[i].togo, s[i].size, s[i].temp);
         }
         else{
-            fprintf(fp,"%d %d %s %d %d", s[i].dc, s[i].cost1, s[i].name, s[i].cost1, s[i].togo);
+            fprintf(fp,"%d %d %s %d %d 0 0", s[i].dc, s[i].num, s[i].name, s[i].cost1, s[i].togo, s[i].size, s[i].temp);
         }
     }
 
@@ -238,12 +238,7 @@ int loadOrder(Dessert s[]){
         return count;
     }
     while(!feof(fp)){
-        if(s[count].dc == 1){
-            fscanf(fp, "%d %d %s %d %d %d %d", &s[count].dc, &s[count].cost1, s[count].name, &s[count].cost1, &s[count].togo, &s[count].size, &s[count].temp);
-        }
-        else{
-            fscanf(fp, "%d %d %s %d %d", &s[count].dc, &s[count].cost1, s[count].name, &s[count].cost1, &s[count].togo);
-        }
+            fscanf(fp, "%d %d %s %d %d %d %d", &s[count].dc, &s[count].num, s[count].name, &s[count].cost1, &s[count].togo, &s[count].size, &s[count].temp);
         if(s[count].cost1 != 0){
             count++;
         }
