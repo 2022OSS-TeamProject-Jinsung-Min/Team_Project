@@ -207,6 +207,52 @@ int updateMenu(Dessert s[],Dessert s2[], int count){
         orderMenu(s,s2,num2);
         return 1;
     }
-} 
+}
+
+void saveOrder(Dessert s[], int count){
+    FILE* fp;
+
+    fp = fopen("menu.txt", "wt");
+    for(int i = 0; i < count; i++){
+        if(s[i].cost1 == -1)
+            continue;
+        if(s[i].dc == 1){
+            fprintf(fp,"%d %d %s %d %d %d %d", s[i].dc, s[i].cost1, s[i].name, s[i].cost1, s[i].togo, s[i].size, s[i].temp);
+        }
+        else{
+            fprintf(fp,"%d %d %s %d %d", s[i].dc, s[i].cost1, s[i].name, s[i].cost1, s[i].togo);
+        }
+    }
+
+    fclose(fp);
+    printf("저장됨!\n");
+}
+
+int loadOrder(Dessert s[]){
+    int count = 0;
+    FILE* fp;
+
+
+    fp = fopen("menu.txt", "r");
+    if(fp == NULL){
+        return count;
+    }
+    while(!feof(fp)){
+        if(s[count].dc == 1){
+            fscanf(fp, "%d %d %s %d %d %d %d", s[count].dc, s[count].cost1, &s[count].name, s[count].cost1, s[count].togo, s[count].size, s[count].temp);
+        }
+        else{
+            fscanf(fp, "%d %d %s %d %d", s[count].dc, s[count].cost1, &s[count].name, s[count].cost1, s[count].togo);
+        }
+        if(s[count].cost1 != 0){
+            count++;
+        }
+    }
+
+    fclose(fp);
+
+    printf("=> 최근 주문내역 출력");
+    return count;
+}
 
 

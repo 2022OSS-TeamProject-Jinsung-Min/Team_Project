@@ -48,7 +48,7 @@ int updateDessert(Dessert i, Dessert *d){
 	printf("사이즈는 어떻게 하실껀가요?");
 	scanf("%[^\n]s", d->size);
 	
-	d->cost = i.[num-1].cost;
+	d->cost = i[num-1].cost;
 
 	printf("포장하실껀가요?");
 	scanf("%d", &d->togo);
