@@ -239,10 +239,10 @@ int loadOrder(Dessert s[]){
     }
     while(!feof(fp)){
         if(s[count].dc == 1){
-            fscanf(fp, "%d %d %s %d %d %d %d", s[count].dc, s[count].cost1, &s[count].name, s[count].cost1, s[count].togo, s[count].size, s[count].temp);
+            fscanf(fp, "%d %d %s %d %d %d %d", &s[count].dc, &s[count].cost1, s[count].name, &s[count].cost1, &s[count].togo, &s[count].size, &s[count].temp);
         }
         else{
-            fscanf(fp, "%d %d %s %d %d", s[count].dc, s[count].cost1, &s[count].name, s[count].cost1, s[count].togo);
+            fscanf(fp, "%d %d %s %d %d", &s[count].dc, &s[count].cost1, s[count].name, &s[count].cost1, &s[count].togo);
         }
         if(s[count].cost1 != 0){
             count++;
