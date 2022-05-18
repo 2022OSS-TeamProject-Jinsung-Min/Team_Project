@@ -234,11 +234,10 @@ int loadOrder(Dessert *s){
 FILE *fp = fopen("menu.txt", "rt");
 
 if(fp == NULL){
-printf("=> 파일 없음!\n");
 return count; 
 }
 
-for(; count<100; count++){
+for(; count<50; count++){
     fscanf(fp, "%d", &s[count].dc);
         if(feof(fp)) break;
         fscanf(fp, "%d", &s[count].num);
