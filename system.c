@@ -139,47 +139,47 @@ void orderMenu(Dessert s[],Dessert s2[],int count){
 void yourOrder(Dessert s[],int count){
         int total=0;
         printf("---------------------Coffee---------------------\n");
-    for(int i=0; i<count; i++){
-        if(s[i].dc == 1){
-        if(s[i].cost1 == -1) continue;
-        printf("%d. ", s[i].num);
-        if(s[i].temp == 1) printf("*Ice %s*", s[i].name);
-        else printf("*Hot %s*", s[i].name);
-        if(s[i].size == 1){
-            printf("  *Tall(%d)*",s[i].cost1);
-            total += s[i].cost1;
-        }
-        else if(s[i].size == 2){
-            s[i].cost2 = s[i].cost1+500;
-            printf("  *Grande(%d)*",s[i].cost2);
-            total += s[i].cost2;
-        } 
-        else {
-            s[i].cost3 = s[i].cost1+1000;
-            printf("  *Venti(%d)*",s[i].cost3);
-            total += s[i].cost3;
-        }
-        if(s[i].togo == 1) printf("  *포장주문 O*");
-        else printf("  *포장주문 X*");
-        printf("\n\n");
-    }
-    }
-     printf("---------------------Cake---------------------\n"); 
         for(int i=0; i<count; i++){
-        if(s[i].dc == 2){
-        if(s[i].cost1 == -1) continue;
-        printf("%d. ", s[i].num);
-        printf("*%s*", s[i].name);
-        printf("  *%d*",s[i].cost1);
-        if(s[i].togo == 1) printf("  *포장주문 O*");
-        else printf("  *포장주문 X*");
+            if(s[i].dc == 1){
+                if(s[i].cost1 == -1) continue;
+                printf("%d. ", s[i].num);
+                if(s[i].temp == 1) printf("*Ice %s*", s[i].name);
+                else printf("*Hot %s*", s[i].name);
+                if(s[i].size == 1){
+                    printf("  *Tall(%d)*",s[i].cost1);
+                    total += s[i].cost1;
+                }
+                else if(s[i].size == 2){
+                    s[i].cost2 = s[i].cost1+500;
+                    printf("  *Grande(%d)*",s[i].cost2);
+                    total += s[i].cost2;
+                } 
+                else {
+                s[i].cost3 = s[i].cost1+1000;
+                printf("  *Venti(%d)*",s[i].cost3);
+                total += s[i].cost3;
+                }
+                if(s[i].togo == 1) printf("  *포장주문 O*");
+                else printf("  *포장주문 X*");
+                printf("\n\n");
+            }
+        }
+        printf("---------------------Cake---------------------\n"); 
+        for(int i=0; i<count; i++){
+            if(s[i].dc == 2){
+                if(s[i].cost1 == -1) continue;
+                printf("%d. ", s[i].num);
+                printf("*%s*", s[i].name);
+                printf("  *%d*",s[i].cost1);
+                if(s[i].togo == 1) printf("  *포장주문 O*");
+                else printf("  *포장주문 X*");
 
-        total += s[i].cost1;
-        printf("\n\n");
-    }
-    }
-printf("----------------------------------------------\n");
-printf("  total: %d\n",total);
+                total += s[i].cost1;
+                printf("\n\n");
+            }
+        }
+        printf("----------------------------------------------\n");
+        printf("  total: %d\n",total);
 }
 
 int updateMenu(Dessert s[],Dessert s2[], int count){
@@ -220,7 +220,7 @@ void saveOrder(Dessert s[], int count){
             fprintf(fp,"%d %d %s %d %d %d %d", s[i].dc, s[i].num, s[i].name, s[i].cost1, s[i].togo, s[i].size, s[i].temp);
         }
         else{
-            fprintf(fp,"%d %d %s %d %d 0 0", s[i].dc, s[i].num, s[i].name, s[i].cost1, s[i].togo, s[i].size, s[i].temp);
+            fprintf(fp,"%d %d %s %d %d 0 0", s[i].dc, s[i].num, s[i].name, s[i].cost1, s[i].togo);
         }
     }
 
@@ -228,21 +228,30 @@ void saveOrder(Dessert s[], int count){
     printf("저장됨!\n");
 }
 
-int loadOrder(Dessert s[]){
+int loadOrder(Dessert *s[]){
     int count = 0;
     FILE* fp;
 
 
-    fp = fopen("menu.txt", "r");
-    if(fp == NULL){
+    fp = fopen("menu.txt", "rt");
+
+    
+    if(fp == NULL)
         return count;
+    while(1){
+        s[count] = (Dessert*)malloc(sizeof(Dessert));
+        fscanf(fp, "%d", &s[count]->dc);
+        if(feof(fp))
+            break;
+        fscanf(fp, "%d", &s[count]->num);
+        fscanf(fp, "%[^\n]s", s[count]->name);
+        fscanf(fp, "%d", &s[count]->cost1);
+        fscanf(fp, "%d", &s[count]->togo);
+        fscanf(fp, "%d", &s[count]->size);
+        fscanf(fp, "%d", &s[count]->temp);
+        count++;
     }
-    while(!feof(fp)){
-            fscanf(fp, "%d %d %s %d %d %d %d", &s[count].dc, &s[count].num, s[count].name, &s[count].cost1, &s[count].togo, &s[count].size, &s[count].temp);
-        if(s[count].cost1 != 0){
-            count++;
-        }
-    }
+
 
     fclose(fp);
 

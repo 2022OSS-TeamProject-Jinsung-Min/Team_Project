@@ -2,11 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include "system.h"
+#include <memory.h>
 
 int main(void){
 Dessert arr[20];
 Dessert order[50];
-Dessert last[50];// 최근 주문내역 저장할 구조체
+Dessert last[50];
 int count=0;
 int lastcount = 0;// 최근 주문내역 불러올시 받을 주문수 변수
 int menu;
@@ -64,7 +65,7 @@ setArray(last, 50);
         else if(menu == 7){
             lastcount = loadOrder(last);
             if(lastcount == 0){
-                printf("최근 주문 내역이 없습니다!\n");
+                printf("No previous Orders!\n");
             }
             else{
                 yourOrder(last, lastcount); 
