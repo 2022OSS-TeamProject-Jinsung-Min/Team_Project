@@ -36,4 +36,4 @@ int updateMenu(Dessert s[],Dessert s2[], int count);
 
 void saveOrder(Dessert s[], int count); 
 
-int loadOrder(Dessert *s[]);
+int loadOrder(Dessert *s);

@@ -228,35 +228,35 @@ void saveOrder(Dessert s[], int count){
     printf("저장됨!\n");
 }
 
-int loadOrder(Dessert *s[]){
+int loadOrder(Dessert *s){
     int count = 0;
-    FILE* fp;
+
+FILE *fp = fopen("menu.txt", "rt");
+
+if(fp == NULL){
+printf("=> 파일 없음!\n");
+return count; 
+}
+
+for(; count<100; count++){
+    fscanf(fp, "%d", &s[count].dc);
+        if(feof(fp)) break;
+        fscanf(fp, "%d", &s[count].num);
+        fscanf(fp, "%[^\n]s", s[count].name);
+        fscanf(fp, "%d", &s[count].cost1);
+        fscanf(fp, "%d", &s[count].togo);
+        fscanf(fp, "%d", &s[count].size);
+        fscanf(fp, "%d", &s[count].temp);
+}
+fclose(fp);
+printf("=> 최근주문내역 로딩성공!\n"); 
+return count;
+} // 파일을 불러오는 함수
 
 
-    fp = fopen("menu.txt", "rt");
+
 
     
-    if(fp == NULL)
-        return count;
-    while(1){
-        s[count] = (Dessert*)malloc(sizeof(Dessert));
-        fscanf(fp, "%d", &s[count]->dc);
-        if(feof(fp))
-            break;
-        fscanf(fp, "%d", &s[count]->num);
-        fscanf(fp, "%[^\n]s", s[count]->name);
-        fscanf(fp, "%d", &s[count]->cost1);
-        fscanf(fp, "%d", &s[count]->togo);
-        fscanf(fp, "%d", &s[count]->size);
-        fscanf(fp, "%d", &s[count]->temp);
-        count++;
-    }
-
-
-    fclose(fp);
-
-    printf("=> 최근 주문내역 출력");
-    return count;
-}
+    
 
 
